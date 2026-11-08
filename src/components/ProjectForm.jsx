@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ProjectForm() {
+export default function ProjectForm({onAdd}) {
   //Use state for accepting string data
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
