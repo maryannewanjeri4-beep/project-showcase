@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ProjectItem from "./ProjectItem.jsx";
 
-export default function ProjectList({ projects = [], loading, error }) {
+export default function ProjectList({ projects = [], loading, error, onDelete }) {
   const [search, setSearch] = useState("");
 
   const term = search.trim().toLowerCase();
@@ -22,7 +22,7 @@ export default function ProjectList({ projects = [], loading, error }) {
   });
 
   return (
-    <section className="panel list-panel">
+    <section className="panel">
       <div className="search-bar">
         <input
           type="search"
@@ -35,14 +35,18 @@ export default function ProjectList({ projects = [], loading, error }) {
 
       {loading && <p className="message">Loading projects...</p>}
       {error && <p className="message error">{error}</p>}
-      
+
       {!loading && !error && filtered.length === 0 && (
         <p className="message">No projects found.</p>
       )}
 
       <ul>
         {!loading && !error && filtered.map((project) => (
-          <ProjectItem key={project.id} project={project} />
+          <ProjectItem
+            key={project.id}
+            project={project}
+            onDelete={onDelete}
+          />
         ))}
       </ul>
     </section>

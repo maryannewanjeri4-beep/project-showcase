@@ -23,6 +23,7 @@ export default function ProjectForm({onAdd}) {
       return;
     }
 
+
     //SPECIAL FEATURE:  (regex)
     const allowedCharacters = /^[a-zA-Z0-9\s.,!\-]+$/;
 
@@ -32,7 +33,7 @@ export default function ProjectForm({onAdd}) {
     }
 
     //verifies the .trim worked
-    console.log({ title: cleanTitle, description: cleanDescription });
+   onAdd({ title: cleanTitle, description: cleanDescription });
 
     setTitle("");
     setDescription("");
